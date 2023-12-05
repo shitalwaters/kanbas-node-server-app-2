@@ -3,6 +3,8 @@ import "dotenv/config";
 import Hello from "./hello.js"
 import Lab5 from "./Lab5.js";
 import cors from "cors";
+import mongoose from "mongoose";
+mongoose.connect("mongodb://localhost:27017")
 import CourseRoutes from "./courses/routes.js";
 import ModuleRoutes from "./modules/routes.js";
 import AssignmentRoutes from './assignments/routes.js';
