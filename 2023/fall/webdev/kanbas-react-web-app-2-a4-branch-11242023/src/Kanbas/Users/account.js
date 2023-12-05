@@ -1,9 +1,11 @@
 import * as client from "./client";
 import { useState, useEffect } from "react";
 import "./account.css";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 function Account() {
+  const navigate = useNavigate(); // Initialize navigate here
+  const { id } = useParams();
   const [account, setAccount] = useState({
     password: '',
     firstName: '',
@@ -12,6 +14,11 @@ function Account() {
     email: '',
     role: 'USER'
   });
+
+  const findUserById = async (id) => {
+    const user = await client.findUserById(id);
+    setAccount(user);
+  };
 
   const fetchAccount = async () => {
     try {
@@ -23,17 +30,13 @@ function Account() {
   };
 
   useEffect(() => {
-    let isMounted = true;
-    fetchAccount().catch(error => {
-      if (isMounted) {
-        console.error("Failed to fetch account:", error);
-      }
-    });
-
-    return () => {
-      isMounted = false;
-    };
+    if (id) {
+      findUserById(id);
+    } else {
+      fetchAccount();
+    }
   }, []);
+
 
   const handleInputChange = (event) => {
     setAccount({
@@ -49,6 +52,13 @@ function Account() {
       console.error("Failed to update account:", error);
     }
   };
+
+
+  const signout = async () => {
+    await client.signout();
+    navigate("/project/signin"); 
+  };
+
 
   return (
     <div className="w-50">
@@ -95,9 +105,12 @@ function Account() {
           <option value="FACULTY">Faculty</option>
           <option value="STUDENT">Student</option>
         </select>
-        <button onClick={save} className="btn btn-danger">
+        <button onClick={save} className="btn btn-success">
           Save
         </button>
+        <button onClick={signout} className="btn btn-danger"  >
+    Signout
+  </button>
         <Link to="/project/admin/users" className="btn btn-warning w-10">
     Users
   </Link>
