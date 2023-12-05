@@ -1,6 +1,8 @@
 import EncodingParametersInURLs from "./EncodingParametersInURLs";
 import WorkingWithObjects from "./WorkingWithObjects";
 import WorkingWithArrays from "./WorkingWithArrays";
+import Signin from "../../Kanbas/Users/signin";
+import Account from "../../Kanbas/Users/account";
 function Assignment5() {
     return (
       <div>
@@ -14,6 +16,8 @@ function Assignment5() {
         <EncodingParametersInURLs/>
         <WorkingWithObjects/>
         <WorkingWithArrays/>
+        <Signin/>
+        <Account/>
         {/* <SimpleAPIExamples /> */}
       </div>
     );
