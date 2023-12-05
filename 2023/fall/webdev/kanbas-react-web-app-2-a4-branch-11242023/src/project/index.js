@@ -2,7 +2,7 @@ import Signin from "../Kanbas/Users/signin";
 import Account from "../Kanbas/Users/account";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Nav from "../nav";
-
+import UserTable from "../Kanbas/Users/table";
 
 function Project() {
   return (
@@ -15,6 +15,7 @@ function Project() {
           <Route path="/" element={<Navigate to="/project/home" />} />
           <Route path="Signin" element={<Signin />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/admin/users" element={<UserTable />} />
         </Routes>
       </div>
       <Signin/>

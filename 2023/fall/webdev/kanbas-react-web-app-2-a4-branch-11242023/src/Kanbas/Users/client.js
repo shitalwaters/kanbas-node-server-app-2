@@ -9,6 +9,11 @@ export const updateUser = async (user) => {
     return response.data;
   };
   
+  export const findAllUsers = async () => {
+    const response = await axios.get(`${USERS_API}`);
+    return response.data;
+  };
+  
 export const account = async () => {
 const response = await axios.post(`${USERS_API}/account`);
   return response.data;

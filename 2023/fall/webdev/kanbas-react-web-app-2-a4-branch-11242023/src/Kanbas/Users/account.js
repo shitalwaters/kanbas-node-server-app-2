@@ -1,6 +1,7 @@
 import * as client from "./client";
 import { useState, useEffect } from "react";
 import "./account.css";
+import { Link } from 'react-router-dom';
 
 function Account() {
   const [account, setAccount] = useState({
@@ -94,9 +95,12 @@ function Account() {
           <option value="FACULTY">Faculty</option>
           <option value="STUDENT">Student</option>
         </select>
-        <button onClick={save}>
+        <button onClick={save} className="btn btn-danger">
           Save
         </button>
+        <Link to="/project/admin/users" className="btn btn-warning w-10">
+    Users
+  </Link>
       </div>
     </div>
   );
