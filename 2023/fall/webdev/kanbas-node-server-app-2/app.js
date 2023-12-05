@@ -4,6 +4,7 @@ import Hello from "./hello.js"
 import Lab5 from "./Lab5.js";
 import cors from "cors";
 import mongoose from "mongoose";
+import UserRoutes from "./users/routes.js";
 mongoose.connect("mongodb://localhost:27017")
 import CourseRoutes from "./courses/routes.js";
 import ModuleRoutes from "./modules/routes.js";
@@ -16,7 +17,7 @@ app.use(
 );
 
 app.use(express.json());
-
+UserRoutes(app);
 AssignmentRoutes(app);
 ModuleRoutes(app);
 CourseRoutes(app);
